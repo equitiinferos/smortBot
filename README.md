@@ -2,6 +2,7 @@
 discord bot 
 
 Commands: 
+
           ?team
 #creates 2 teams from a list of mentions 
 
