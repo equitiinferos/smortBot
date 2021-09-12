@@ -1,0 +1,2 @@
+# smortBot
+discord bot
