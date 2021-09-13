@@ -86,7 +86,7 @@ async def ping(ctx):
   ''': Pong'''
   await ctx.send('pong')
 
-    #define help command
+#define help command
 @bot.command(name="help")
 async def help(ctx):
   ''': Help'''
