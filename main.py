@@ -60,7 +60,7 @@ async def team(ctx: commands.Context, players: commands.Greedy[discord.Member]):
 async def split(ctx):
   ''': Splits Ye Old Trap into two teams'''
 
-  VC = discord.utils.get(ctx.guild.channels, id=#voice channel id here#)
+  VC = discord.utils.get(ctx.guild.channels, id=os.getenv('channelID'))
   members = VC.members
   
   if len(members)%2 == 0 and len(members)>1:
@@ -103,11 +103,6 @@ async def stonk(ctx):
 async def coin(ctx):
   ''': Fetches crypto data'''
   await ctx.send(cryptoData)
-
-#define a command to harrass miha
-@bot.command(name="0")
-async def zero(ctx):
-  await ctx.send('you nigga')
 
 #define command to n̶̿͌ö̷́̚ ̸̈́̅ỏ̵̀á̵͊t̷̀̅s̴̆̽
 @bot.listen('on_message')
