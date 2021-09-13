@@ -11,7 +11,7 @@ intents = discord.Intents.default()
 intents.members = True
 
 #bot prefix
-bot = commands.Bot(command_prefix= '?', case_insensitive=True, intents=intents)
+bot = commands.Bot(command_prefix= '?', case_insensitive=True, intents=intents, help_command=None)
 
 #get stockData
 stocks = ['^GSPC', 'AAPL', 'MSFT', 'NIO', 'ZM', 'TSLA', 'MANU', 'AMD']
@@ -86,6 +86,12 @@ async def ping(ctx):
   ''': Pong'''
   await ctx.send('pong')
 
+    #define help command
+@bot.command(name="help")
+async def help(ctx):
+  ''': Help'''
+  await ctx.send("coin  : Fetches crypto data\nhelp : Shows this message\nping  : Pong\npurge : Purges the last 50 messages\nsplit : Splits Ye Old Trap into two teams\nstonk : Fetches stock data\nteam  : Creates two teams from a list of mentions\nCheck out my sourceCode: https://github.com/equitiinferos/smortBot")
+    
 #define command to purge channel messages
 @bot.command(name='purge')
 async def clear(ctx, amount=50):
