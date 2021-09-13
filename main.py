@@ -10,18 +10,25 @@ import yfinance as yf
 intents = discord.Intents.default()  
 intents.members = True
 
-#get stockData
-stocks = ['AAPL', 'MSFT', 'NIO', 'ZM', 'TSLA', 'MANU', 'AMD']
-data = yf.download(tickers=stocks, period='1d', interval='1d')
+#bot prefix
+bot = commands.Bot(command_prefix= '?', case_insensitive=True, intents=intents)
 
+#get stockData
+stocks = ['^GSPC', 'AAPL', 'MSFT', 'NIO', 'ZM', 'TSLA', 'MANU', 'AMD']
+data = yf.download(tickers=stocks, period='1d', interval='1d')
 #clean stockData
 columns = ["Adj Close", "High", "Low", "Open", "Volume"]
 data.drop(columns=columns, axis=1, inplace=True)
 data.index = data.index.tz_localize(None)
 data = data.T
 
-#bot prefix
-bot = commands.Bot(command_prefix= '?', case_insensitive=True, intents=intents)
+#cryptoData
+coins = ['BTC-EUR', 'ETH-EUR', 'ADA-EUR', 'VET-EUR']
+cryptoData = yf.download(tickers=coins, period='1d', interval='1d')
+#clean cryptoData
+columns = ["Adj Close", "High", "Low", "Open", "Volume"]
+cryptoData.drop(columns=columns, axis=1, inplace=True)
+cryptoData = cryptoData.T
 
 phrases = ['You may have n̶̿͌ö̷́̚ ̸̈́̅ỏ̵̀á̵͊t̷̀̅s̴̆̽', 'HAHAHAHAHAAHAHAHAAH','fucking kill yourself', 'die', 'read the fucking rules dog', 'wow this shit again?', 'n̶̿͌ö̷́̚ ̸̈́̅ỏ̵̀á̵͊t̷̀̅s̴̆̽']
 
@@ -53,7 +60,7 @@ async def team(ctx: commands.Context, players: commands.Greedy[discord.Member]):
 async def split(ctx):
   ''': Splits Ye Old Trap into two teams'''
 
-  VC = discord.utils.get(ctx.guild.channels, id=#channelidhere#)
+  VC = discord.utils.get(ctx.guild.channels, id=#voice channel id here#)
   members = VC.members
   
   if len(members)%2 == 0 and len(members)>1:
@@ -85,12 +92,24 @@ async def clear(ctx, amount=50):
     ''': Purges the last 50 messages'''
     await ctx.channel.purge(limit=amount)
 
-#define command to get crypto stocks
+#define command to get stockDAta
 @bot.command(name="stonk")
 async def stonk(ctx):
+  ''': Fetches stock data'''
   await ctx.send(data)
 
-#define n̶̿͌ö̷́̚ ̸̈́̅ỏ̵̀á̵͊t̷̀̅s̴̆̽
+#define command to get cryptoDAta
+@bot.command(name="coin")
+async def coin(ctx):
+  ''': Fetches crypto data'''
+  await ctx.send(cryptoData)
+
+#define a command to harrass miha
+@bot.command(name="0")
+async def zero(ctx):
+  await ctx.send('you nigga')
+
+#define command to n̶̿͌ö̷́̚ ̸̈́̅ỏ̵̀á̵͊t̷̀̅s̴̆̽
 @bot.listen('on_message')
 async def _message(message):
     if message.author == bot.user:
