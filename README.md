@@ -1,5 +1,5 @@
 # smortBot
-discord bot **Warning: Expletives**
+smortBot discord bot. **Warning: Contains Expletives**
 
 Commands: 
 
