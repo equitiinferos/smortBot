@@ -36,6 +36,15 @@ phrases = ['You may have n̶̿͌ö̷́̚ ̸̈́̅ỏ̵̀á̵͊t̷̀̅s̴̆̽', 'HA
 async def on_ready():
     print('bitch we in')
 
+#define help command
+@bot.command(name="help")
+async def help(ctx):
+    ''': Help'''
+    embed=discord.Embed(title="Check out smortBot's sourceCode on github!", url="https://github.com/equitiinferos/smortBot", description="coin  : Fetches crypto data\nhelp : Shows this message\nping  : Pong\npurge : Purges the last 50 messages\nsplit : Splits Ye Old Trap into two teams\nstonk : Fetches stock data\nteam  : Creates two teams from a list of mentions", color=discord.Color.blue())
+    embed.set_author(name="xerx#7123", url="https://github.com/equitiinferos", icon_url="https://i.scdn.co/image/ab67616d0000b27378c17e476e19c80c0e6cd740")
+    embed.set_thumbnail(url="https://ih1.redbubble.net/image.1011989483.2592/fpp,small,lustre,wall_texture,product,750x1000.jpg")
+    await ctx.send(embed=embed)
+    
 #define command to create teams from a list of mentions
 @bot.command(name="team", aliases=['t'])
 async def team(ctx: commands.Context, players: commands.Greedy[discord.Member]):
@@ -85,12 +94,6 @@ async def split(ctx):
 async def ping(ctx):
   ''': Pong'''
   await ctx.send('pong')
-
-#define help command
-@bot.command(name="help")
-async def help(ctx):
-  ''': Help'''
-  await ctx.send("coin  : Fetches crypto data\nhelp : Shows this message\nping  : Pong\npurge : Purges the last 50 messages\nsplit : Splits Ye Old Trap into two teams\nstonk : Fetches stock data\nteam  : Creates two teams from a list of mentions\nCheck out my sourceCode: https://github.com/equitiinferos/smortBot")
     
 #define command to purge channel messages
 @bot.command(name='purge')
