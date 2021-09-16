@@ -5,6 +5,7 @@ import asyncio
 from keep_alive import keep_alive
 from discord.ext import commands
 import yfinance as yf 
+import youtube_dl
 
 #allow the use of custom intents
 intents = discord.Intents.default()  
